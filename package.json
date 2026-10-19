@@ -1,0 +1,26 @@
+{
+  "name": "shipgate",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run src tests",
+    "deploy": "node scripts/deploy.mjs",
+    "live": "node scripts/live.mjs"
+  },
+  "dependencies": {
+    "genlayer-js": "1.1.8",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "4.7.0",
+    "typescript": "5.9.3",
+    "vite": "6.4.4",
+    "vitest": "4.1.11"
+  }
+}
