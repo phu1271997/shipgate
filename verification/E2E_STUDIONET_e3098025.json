@@ -1,0 +1,1522 @@
+{
+  "schema": "shipgate-e2e-v1",
+  "network": "studionet",
+  "contract": "0x2571888A8EFF43734eb05F7421c81b8EE3098025",
+  "roles": {
+    "client": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+    "vendor": "0xCd8bE5b63AAb48E65AD9c2f64a9768Cbc923Df81",
+    "deployer_used": false
+  },
+  "target": "https://api.github.com",
+  "records": {
+    "A": {
+      "id": 0,
+      "terms": {
+        "title": "Status API meets both checks (ACCEPTED)",
+        "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81",
+        "target_url": "https://api.github.com",
+        "budget": 1000000000000000,
+        "partial_bps": 5000,
+        "submit_deadline": 1792417047,
+        "review_end": 1792417347,
+        "expires": 1792426047,
+        "probe_paths": [
+          "/zen",
+          "/octocat"
+        ],
+        "checks": [
+          "The /zen endpoint returns HTTP 200 with a short one-sentence maxim as the response body.",
+          "The /octocat endpoint returns HTTP 200 with a non-empty body (ASCII art of the GitHub mascot)."
+        ]
+      },
+      "review_end": 1792417347
+    },
+    "B": {
+      "id": 1,
+      "terms": {
+        "title": "Required field absent (REJECTED refund)",
+        "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81",
+        "target_url": "https://api.github.com",
+        "budget": 1000000000000000,
+        "partial_bps": 5000,
+        "submit_deadline": 1792417177,
+        "review_end": 1792417477,
+        "expires": 1792426177,
+        "probe_paths": [
+          "/"
+        ],
+        "checks": [
+          "The / response body is a JSON object containing a field named billing_email holding the account billing address."
+        ]
+      },
+      "review_end": 1792417477
+    },
+    "C": {
+      "id": 2,
+      "terms": {
+        "title": "Disputed then re-reviewed (ACCEPTED)",
+        "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81",
+        "target_url": "https://api.github.com",
+        "budget": 1000000000000000,
+        "partial_bps": 5000,
+        "submit_deadline": 1792417309,
+        "review_end": 1792417609,
+        "expires": 1792426309,
+        "probe_paths": [
+          "/zen"
+        ],
+        "checks": [
+          "The /zen endpoint returns HTTP 200 with a short maxim (a single motivational sentence)."
+        ]
+      },
+      "review_end": 1792417609
+    }
+  },
+  "transactions": [
+    {
+      "label": "A: create",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "create_agreement",
+      "args": [
+        "{\"title\":\"Status API meets both checks (ACCEPTED)\",\"vendor\":\"0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81\",\"target_url\":\"https://api.github.com\",\"budget\":1000000000000000,\"partial_bps\":5000,\"submit_deadline\":1792417047,\"review_end\":1792417347,\"expires\":1792426047,\"probe_paths\":[\"/zen\",\"/octocat\"],\"checks\":[\"The /zen endpoint returns HTTP 200 with a short one-sentence maxim as the response body.\",\"The /octocat endpoint returns HTTP 200 with a non-empty body (ASCII art of the GitHub mascot).\"]}"
+      ],
+      "value": "0",
+      "hash": "0xf1d7b5bb635f20d8a24d929835ead59dcd83fa920d2873ec94c3448fd4a59ed3",
+      "after": {
+        "clock": "2026-10-19T13:08:10.527104Z",
+        "count": 1,
+        "schema": "shipgate-v1"
+      },
+      "result": 0,
+      "verified": true
+    },
+    {
+      "label": "A: fund",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "fund",
+      "args": [
+        "0"
+      ],
+      "value": "1000000000000000",
+      "hash": "0x50748ee262a6efce956e9ae6db9600fa71155140ef0491a2bad71bd597fc1cf6",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {},
+        "dispute": null,
+        "held": 1000000000000000,
+        "id": 0,
+        "paid": 0,
+        "phase": "FUNDED",
+        "refunded": 0,
+        "submission": null,
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The /zen endpoint returns HTTP 200 with a short one-sentence maxim as the response body.",
+            "The /octocat endpoint returns HTTP 200 with a non-empty body (ASCII art of the GitHub mascot)."
+          ],
+          "expires": 1792426047,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/zen",
+            "/octocat"
+          ],
+          "review_end": 1792417347,
+          "submit_deadline": 1792417047,
+          "target_url": "https://api.github.com",
+          "title": "Status API meets both checks (ACCEPTED)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "7dafc3461b03879ac630defad443c6eba08e3eba7e6baed7b0c64dce0db8f75f",
+        "verdict": null
+      },
+      "result": "FUNDED",
+      "verified": true
+    },
+    {
+      "label": "A: submit",
+      "actor": "0xCd8bE5b63AAb48E65AD9c2f64a9768Cbc923Df81",
+      "function": "submit",
+      "args": [
+        "0"
+      ],
+      "value": "0",
+      "hash": "0xdb1130eb9b1db96b02519a02192af5a83c349e3a09e116d4b6c8e45ae9c26984",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {},
+        "dispute": null,
+        "held": 1000000000000000,
+        "id": 0,
+        "paid": 0,
+        "phase": "SUBMITTED",
+        "refunded": 0,
+        "submission": {
+          "at": 1792415335,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The /zen endpoint returns HTTP 200 with a short one-sentence maxim as the response body.",
+            "The /octocat endpoint returns HTTP 200 with a non-empty body (ASCII art of the GitHub mascot)."
+          ],
+          "expires": 1792426047,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/zen",
+            "/octocat"
+          ],
+          "review_end": 1792417347,
+          "submit_deadline": 1792417047,
+          "target_url": "https://api.github.com",
+          "title": "Status API meets both checks (ACCEPTED)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "7dafc3461b03879ac630defad443c6eba08e3eba7e6baed7b0c64dce0db8f75f",
+        "verdict": null
+      },
+      "result": "SUBMITTED",
+      "verified": true
+    },
+    {
+      "label": "B: create",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "create_agreement",
+      "args": [
+        "{\"title\":\"Required field absent (REJECTED refund)\",\"vendor\":\"0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81\",\"target_url\":\"https://api.github.com\",\"budget\":1000000000000000,\"partial_bps\":5000,\"submit_deadline\":1792417177,\"review_end\":1792417477,\"expires\":1792426177,\"probe_paths\":[\"/\"],\"checks\":[\"The / response body is a JSON object containing a field named billing_email holding the account billing address.\"]}"
+      ],
+      "value": "0",
+      "hash": "0xa257c4ec82b5307542b652c55c85de169e3370cb0cd05f114322a4d054a17244",
+      "after": {
+        "clock": "2026-10-19T13:10:22.032612Z",
+        "count": 2,
+        "schema": "shipgate-v1"
+      },
+      "result": 1,
+      "verified": true
+    },
+    {
+      "label": "B: fund",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "fund",
+      "args": [
+        "1"
+      ],
+      "value": "1000000000000000",
+      "hash": "0x184069b4a79595241b34f1feda5abb2ae6b8e8741679efcd5aaff2874627f63b",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {},
+        "dispute": null,
+        "held": 1000000000000000,
+        "id": 1,
+        "paid": 0,
+        "phase": "FUNDED",
+        "refunded": 0,
+        "submission": null,
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The / response body is a JSON object containing a field named billing_email holding the account billing address."
+          ],
+          "expires": 1792426177,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/"
+          ],
+          "review_end": 1792417477,
+          "submit_deadline": 1792417177,
+          "target_url": "https://api.github.com",
+          "title": "Required field absent (REJECTED refund)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "f019689fcddf8f39fbfd37e2363820479c3423d2d442abfd0be4acbb7ba90758",
+        "verdict": null
+      },
+      "result": "FUNDED",
+      "verified": true
+    },
+    {
+      "label": "B: submit",
+      "actor": "0xCd8bE5b63AAb48E65AD9c2f64a9768Cbc923Df81",
+      "function": "submit",
+      "args": [
+        "1"
+      ],
+      "value": "0",
+      "hash": "0xf57029120883326dac04770a4ee55bae4cef52eeea1981f840eca821125577d4",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {},
+        "dispute": null,
+        "held": 1000000000000000,
+        "id": 1,
+        "paid": 0,
+        "phase": "SUBMITTED",
+        "refunded": 0,
+        "submission": {
+          "at": 1792415468,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The / response body is a JSON object containing a field named billing_email holding the account billing address."
+          ],
+          "expires": 1792426177,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/"
+          ],
+          "review_end": 1792417477,
+          "submit_deadline": 1792417177,
+          "target_url": "https://api.github.com",
+          "title": "Required field absent (REJECTED refund)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "f019689fcddf8f39fbfd37e2363820479c3423d2d442abfd0be4acbb7ba90758",
+        "verdict": null
+      },
+      "result": "SUBMITTED",
+      "verified": true
+    },
+    {
+      "label": "C: create",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "create_agreement",
+      "args": [
+        "{\"title\":\"Disputed then re-reviewed (ACCEPTED)\",\"vendor\":\"0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81\",\"target_url\":\"https://api.github.com\",\"budget\":1000000000000000,\"partial_bps\":5000,\"submit_deadline\":1792417309,\"review_end\":1792417609,\"expires\":1792426309,\"probe_paths\":[\"/zen\"],\"checks\":[\"The /zen endpoint returns HTTP 200 with a short maxim (a single motivational sentence).\"]}"
+      ],
+      "value": "0",
+      "hash": "0x393dfa7c32004541cd626b8bbfb890eddbd354bda98e8d08602b923e29264fbb",
+      "after": {
+        "clock": "2026-10-19T13:12:32.270339Z",
+        "count": 3,
+        "schema": "shipgate-v1"
+      },
+      "result": 2,
+      "verified": true
+    },
+    {
+      "label": "C: fund",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "fund",
+      "args": [
+        "2"
+      ],
+      "value": "1000000000000000",
+      "hash": "0x5b51ee98b85b7025c4908014e351312f7a6671ada7d90066586598e540a7c725",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {},
+        "dispute": null,
+        "held": 1000000000000000,
+        "id": 2,
+        "paid": 0,
+        "phase": "FUNDED",
+        "refunded": 0,
+        "submission": null,
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The /zen endpoint returns HTTP 200 with a short maxim (a single motivational sentence)."
+          ],
+          "expires": 1792426309,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/zen"
+          ],
+          "review_end": 1792417609,
+          "submit_deadline": 1792417309,
+          "target_url": "https://api.github.com",
+          "title": "Disputed then re-reviewed (ACCEPTED)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "9920f069c84eac222ed321549c821ec851393bf75913a7eae26b65f444ec92fe",
+        "verdict": null
+      },
+      "result": "FUNDED",
+      "verified": true
+    },
+    {
+      "label": "C: submit",
+      "actor": "0xCd8bE5b63AAb48E65AD9c2f64a9768Cbc923Df81",
+      "function": "submit",
+      "args": [
+        "2"
+      ],
+      "value": "0",
+      "hash": "0x65c02265a3793a610540eb49ed1e7a28bc9af616401a89dd51d3e5acc6fb4d19",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {},
+        "dispute": null,
+        "held": 1000000000000000,
+        "id": 2,
+        "paid": 0,
+        "phase": "SUBMITTED",
+        "refunded": 0,
+        "submission": {
+          "at": 1792415598,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The /zen endpoint returns HTTP 200 with a short maxim (a single motivational sentence)."
+          ],
+          "expires": 1792426309,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/zen"
+          ],
+          "review_end": 1792417609,
+          "submit_deadline": 1792417309,
+          "target_url": "https://api.github.com",
+          "title": "Disputed then re-reviewed (ACCEPTED)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "9920f069c84eac222ed321549c821ec851393bf75913a7eae26b65f444ec92fe",
+        "verdict": null
+      },
+      "result": "SUBMITTED",
+      "verified": true
+    },
+    {
+      "label": "A: review",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "review",
+      "args": [
+        "0"
+      ],
+      "value": "0",
+      "hash": "0x0442007c53e76f0cf55098cbcbd8df4d4c9a31a04c394651d83bb359abd08504",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {},
+        "dispute": null,
+        "held": 1000000000000000,
+        "id": 0,
+        "paid": 0,
+        "phase": "REVIEWED",
+        "refunded": 0,
+        "submission": {
+          "at": 1792415335,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The /zen endpoint returns HTTP 200 with a short one-sentence maxim as the response body.",
+            "The /octocat endpoint returns HTTP 200 with a non-empty body (ASCII art of the GitHub mascot)."
+          ],
+          "expires": 1792426047,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/zen",
+            "/octocat"
+          ],
+          "review_end": 1792417347,
+          "submit_deadline": 1792417047,
+          "target_url": "https://api.github.com",
+          "title": "Status API meets both checks (ACCEPTED)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "7dafc3461b03879ac630defad443c6eba08e3eba7e6baed7b0c64dce0db8f75f",
+        "verdict": {
+          "result": {
+            "matched": [
+              0,
+              1
+            ],
+            "outcome": "ACCEPTED"
+          },
+          "reviewed_at": 1792415647,
+          "snapshot": {
+            "observations": [
+              {
+                "body_sha256": "7232f138e0507882e71632575365bb06c3c99bc7b871a208da77fbf475a17da9",
+                "content_type": "b'text/plain;charset=utf-8'",
+                "length": 39,
+                "path": "/zen",
+                "status": 200
+              },
+              {
+                "body_sha256": "049c6bd9bb4b4756a3aee6bc0228b631ad37edf044625c2a22af6117eee2831d",
+                "content_type": "b'application/octocat-stream'",
+                "length": 913,
+                "path": "/octocat",
+                "status": 200
+              }
+            ],
+            "paths": [
+              "/zen",
+              "/octocat"
+            ],
+            "target": "https://api.github.com"
+          }
+        }
+      },
+      "result": "ACCEPTED",
+      "verified": true
+    },
+    {
+      "label": "B: review",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "review",
+      "args": [
+        "1"
+      ],
+      "value": "0",
+      "hash": "0xdb72f2444927b0de5cbc1a928da37353c4e755ab56aac54f11048b5bd7c18216",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {},
+        "dispute": null,
+        "held": 1000000000000000,
+        "id": 1,
+        "paid": 0,
+        "phase": "REVIEWED",
+        "refunded": 0,
+        "submission": {
+          "at": 1792415468,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The / response body is a JSON object containing a field named billing_email holding the account billing address."
+          ],
+          "expires": 1792426177,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/"
+          ],
+          "review_end": 1792417477,
+          "submit_deadline": 1792417177,
+          "target_url": "https://api.github.com",
+          "title": "Required field absent (REJECTED refund)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "f019689fcddf8f39fbfd37e2363820479c3423d2d442abfd0be4acbb7ba90758",
+        "verdict": {
+          "result": {
+            "matched": [],
+            "outcome": "REJECTED"
+          },
+          "reviewed_at": 1792415730,
+          "snapshot": {
+            "observations": [
+              {
+                "body_sha256": "cb8c56af7fcef970136a8acacba4e16ea32ab6762dbaaddf6909fae9db2c9f5e",
+                "content_type": "b'application/json; charset=utf-8'",
+                "length": 2262,
+                "path": "/",
+                "status": 200
+              }
+            ],
+            "paths": [
+              "/"
+            ],
+            "target": "https://api.github.com"
+          }
+        }
+      },
+      "result": "REJECTED",
+      "verified": true
+    },
+    {
+      "label": "C: review",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "review",
+      "args": [
+        "2"
+      ],
+      "value": "0",
+      "hash": "0xc163b63c23e35de20f87c4039b22fb24a0073fb66d74d6051c8e8106034f7198",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {},
+        "dispute": null,
+        "held": 1000000000000000,
+        "id": 2,
+        "paid": 0,
+        "phase": "REVIEWED",
+        "refunded": 0,
+        "submission": {
+          "at": 1792415598,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The /zen endpoint returns HTTP 200 with a short maxim (a single motivational sentence)."
+          ],
+          "expires": 1792426309,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/zen"
+          ],
+          "review_end": 1792417609,
+          "submit_deadline": 1792417309,
+          "target_url": "https://api.github.com",
+          "title": "Disputed then re-reviewed (ACCEPTED)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "9920f069c84eac222ed321549c821ec851393bf75913a7eae26b65f444ec92fe",
+        "verdict": {
+          "result": {
+            "matched": [
+              0
+            ],
+            "outcome": "ACCEPTED"
+          },
+          "reviewed_at": 1792415779,
+          "snapshot": {
+            "observations": [
+              {
+                "body_sha256": "7232f138e0507882e71632575365bb06c3c99bc7b871a208da77fbf475a17da9",
+                "content_type": "b'text/plain;charset=utf-8'",
+                "length": 39,
+                "path": "/zen",
+                "status": 200
+              }
+            ],
+            "paths": [
+              "/zen"
+            ],
+            "target": "https://api.github.com"
+          }
+        }
+      },
+      "result": "ACCEPTED",
+      "verified": true
+    },
+    {
+      "label": "C: dispute",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "dispute",
+      "args": [
+        "2",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "value": "0",
+      "hash": "0x0c50775c289820435e92868832af86e68c083ca41e7f90e6579997c881ce9722",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {},
+        "dispute": {
+          "by": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+          "reason_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "held": 1000000000000000,
+        "id": 2,
+        "paid": 0,
+        "phase": "DISPUTED",
+        "refunded": 0,
+        "submission": {
+          "at": 1792415598,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The /zen endpoint returns HTTP 200 with a short maxim (a single motivational sentence)."
+          ],
+          "expires": 1792426309,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/zen"
+          ],
+          "review_end": 1792417609,
+          "submit_deadline": 1792417309,
+          "target_url": "https://api.github.com",
+          "title": "Disputed then re-reviewed (ACCEPTED)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "9920f069c84eac222ed321549c821ec851393bf75913a7eae26b65f444ec92fe",
+        "verdict": {
+          "result": {
+            "matched": [
+              0
+            ],
+            "outcome": "ACCEPTED"
+          },
+          "reviewed_at": 1792415779,
+          "snapshot": {
+            "observations": [
+              {
+                "body_sha256": "7232f138e0507882e71632575365bb06c3c99bc7b871a208da77fbf475a17da9",
+                "content_type": "b'text/plain;charset=utf-8'",
+                "length": 39,
+                "path": "/zen",
+                "status": 200
+              }
+            ],
+            "paths": [
+              "/zen"
+            ],
+            "target": "https://api.github.com"
+          }
+        }
+      },
+      "result": "DISPUTED",
+      "verified": true
+    },
+    {
+      "label": "C: resolve",
+      "actor": "0xCd8bE5b63AAb48E65AD9c2f64a9768Cbc923Df81",
+      "function": "resolve",
+      "args": [
+        "2"
+      ],
+      "value": "0",
+      "hash": "0x30fea56f720ac91e153bf52cf4220d342a48c93686b13b3d35017fae82a4bbce",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {},
+        "dispute": {
+          "by": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+          "reason_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "held": 1000000000000000,
+        "id": 2,
+        "paid": 0,
+        "phase": "REVIEWED",
+        "refunded": 0,
+        "submission": {
+          "at": 1792415598,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The /zen endpoint returns HTTP 200 with a short maxim (a single motivational sentence)."
+          ],
+          "expires": 1792426309,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/zen"
+          ],
+          "review_end": 1792417609,
+          "submit_deadline": 1792417309,
+          "target_url": "https://api.github.com",
+          "title": "Disputed then re-reviewed (ACCEPTED)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "9920f069c84eac222ed321549c821ec851393bf75913a7eae26b65f444ec92fe",
+        "verdict": {
+          "result": {
+            "matched": [
+              0
+            ],
+            "outcome": "ACCEPTED"
+          },
+          "reviewed_at": 1792415887,
+          "snapshot": {
+            "observations": [
+              {
+                "body_sha256": "1f38dd4b761858487798ea7d96fcbdd9f94bf51536d8433b1868638e1f116ff2",
+                "content_type": "b'text/plain;charset=utf-8'",
+                "length": 31,
+                "path": "/zen",
+                "status": 200
+              }
+            ],
+            "paths": [
+              "/zen"
+            ],
+            "target": "https://api.github.com"
+          }
+        }
+      },
+      "result": "ACCEPTED",
+      "verified": true
+    },
+    {
+      "label": "A: settle",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "settle",
+      "args": [
+        "0"
+      ],
+      "value": "0",
+      "hash": "0x3f731a93781dd99eaf4a050934ef8c291f716af57b8d13002eb145aceaf71580",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {
+          "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81": {
+            "amount": 1000000000000000,
+            "kind": "PAYOUT",
+            "payout_amount": 1000000000000000,
+            "refund_amount": 0,
+            "status": "AVAILABLE"
+          }
+        },
+        "dispute": null,
+        "held": 1000000000000000,
+        "id": 0,
+        "paid": 0,
+        "phase": "SETTLED",
+        "refunded": 0,
+        "submission": {
+          "at": 1792415335,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The /zen endpoint returns HTTP 200 with a short one-sentence maxim as the response body.",
+            "The /octocat endpoint returns HTTP 200 with a non-empty body (ASCII art of the GitHub mascot)."
+          ],
+          "expires": 1792426047,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/zen",
+            "/octocat"
+          ],
+          "review_end": 1792417347,
+          "submit_deadline": 1792417047,
+          "target_url": "https://api.github.com",
+          "title": "Status API meets both checks (ACCEPTED)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "7dafc3461b03879ac630defad443c6eba08e3eba7e6baed7b0c64dce0db8f75f",
+        "verdict": {
+          "result": {
+            "matched": [
+              0,
+              1
+            ],
+            "outcome": "ACCEPTED"
+          },
+          "reviewed_at": 1792415647,
+          "snapshot": {
+            "observations": [
+              {
+                "body_sha256": "7232f138e0507882e71632575365bb06c3c99bc7b871a208da77fbf475a17da9",
+                "content_type": "b'text/plain;charset=utf-8'",
+                "length": 39,
+                "path": "/zen",
+                "status": 200
+              },
+              {
+                "body_sha256": "049c6bd9bb4b4756a3aee6bc0228b631ad37edf044625c2a22af6117eee2831d",
+                "content_type": "b'application/octocat-stream'",
+                "length": 913,
+                "path": "/octocat",
+                "status": 200
+              }
+            ],
+            "paths": [
+              "/zen",
+              "/octocat"
+            ],
+            "target": "https://api.github.com"
+          }
+        }
+      },
+      "result": "ACCEPTED",
+      "verified": true
+    },
+    {
+      "label": "B: settle",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "settle",
+      "args": [
+        "1"
+      ],
+      "value": "0",
+      "hash": "0x64dc0919ed88838a1bdea4c679d760dfa9feb118a215e2ae5b718922595f5424",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {
+          "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235": {
+            "amount": 1000000000000000,
+            "kind": "REFUND",
+            "payout_amount": 0,
+            "refund_amount": 1000000000000000,
+            "status": "AVAILABLE"
+          }
+        },
+        "dispute": null,
+        "held": 1000000000000000,
+        "id": 1,
+        "paid": 0,
+        "phase": "SETTLED",
+        "refunded": 0,
+        "submission": {
+          "at": 1792415468,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The / response body is a JSON object containing a field named billing_email holding the account billing address."
+          ],
+          "expires": 1792426177,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/"
+          ],
+          "review_end": 1792417477,
+          "submit_deadline": 1792417177,
+          "target_url": "https://api.github.com",
+          "title": "Required field absent (REJECTED refund)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "f019689fcddf8f39fbfd37e2363820479c3423d2d442abfd0be4acbb7ba90758",
+        "verdict": {
+          "result": {
+            "matched": [],
+            "outcome": "REJECTED"
+          },
+          "reviewed_at": 1792415730,
+          "snapshot": {
+            "observations": [
+              {
+                "body_sha256": "cb8c56af7fcef970136a8acacba4e16ea32ab6762dbaaddf6909fae9db2c9f5e",
+                "content_type": "b'application/json; charset=utf-8'",
+                "length": 2262,
+                "path": "/",
+                "status": 200
+              }
+            ],
+            "paths": [
+              "/"
+            ],
+            "target": "https://api.github.com"
+          }
+        }
+      },
+      "result": "REJECTED",
+      "verified": true
+    },
+    {
+      "label": "C: settle",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "settle",
+      "args": [
+        "2"
+      ],
+      "value": "0",
+      "hash": "0xd9fdb1bbca157740b2489cee48c44efe3907aa46cd4c4a3f2511f734ad1cee94",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {
+          "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81": {
+            "amount": 1000000000000000,
+            "kind": "PAYOUT",
+            "payout_amount": 1000000000000000,
+            "refund_amount": 0,
+            "status": "AVAILABLE"
+          }
+        },
+        "dispute": {
+          "by": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+          "reason_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "held": 1000000000000000,
+        "id": 2,
+        "paid": 0,
+        "phase": "SETTLED",
+        "refunded": 0,
+        "submission": {
+          "at": 1792415598,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The /zen endpoint returns HTTP 200 with a short maxim (a single motivational sentence)."
+          ],
+          "expires": 1792426309,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/zen"
+          ],
+          "review_end": 1792417609,
+          "submit_deadline": 1792417309,
+          "target_url": "https://api.github.com",
+          "title": "Disputed then re-reviewed (ACCEPTED)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "9920f069c84eac222ed321549c821ec851393bf75913a7eae26b65f444ec92fe",
+        "verdict": {
+          "result": {
+            "matched": [
+              0
+            ],
+            "outcome": "ACCEPTED"
+          },
+          "reviewed_at": 1792415887,
+          "snapshot": {
+            "observations": [
+              {
+                "body_sha256": "1f38dd4b761858487798ea7d96fcbdd9f94bf51536d8433b1868638e1f116ff2",
+                "content_type": "b'text/plain;charset=utf-8'",
+                "length": 31,
+                "path": "/zen",
+                "status": 200
+              }
+            ],
+            "paths": [
+              "/zen"
+            ],
+            "target": "https://api.github.com"
+          }
+        }
+      },
+      "result": "ACCEPTED",
+      "verified": true
+    },
+    {
+      "label": "A: vendor withdraw",
+      "actor": "0xCd8bE5b63AAb48E65AD9c2f64a9768Cbc923Df81",
+      "function": "withdraw",
+      "args": [
+        "0"
+      ],
+      "value": "0",
+      "hash": "0x84046a18ae3a45a1af4e8be08bb6eadce081bc4b4422cc1b75572ca9a22443d2",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {
+          "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81": {
+            "amount": 1000000000000000,
+            "kind": "PAYOUT",
+            "payout_amount": 1000000000000000,
+            "refund_amount": 0,
+            "status": "PAID"
+          }
+        },
+        "dispute": null,
+        "held": 0,
+        "id": 0,
+        "paid": 1000000000000000,
+        "phase": "SETTLED",
+        "refunded": 0,
+        "submission": {
+          "at": 1792415335,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The /zen endpoint returns HTTP 200 with a short one-sentence maxim as the response body.",
+            "The /octocat endpoint returns HTTP 200 with a non-empty body (ASCII art of the GitHub mascot)."
+          ],
+          "expires": 1792426047,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/zen",
+            "/octocat"
+          ],
+          "review_end": 1792417347,
+          "submit_deadline": 1792417047,
+          "target_url": "https://api.github.com",
+          "title": "Status API meets both checks (ACCEPTED)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "7dafc3461b03879ac630defad443c6eba08e3eba7e6baed7b0c64dce0db8f75f",
+        "verdict": {
+          "result": {
+            "matched": [
+              0,
+              1
+            ],
+            "outcome": "ACCEPTED"
+          },
+          "reviewed_at": 1792415647,
+          "snapshot": {
+            "observations": [
+              {
+                "body_sha256": "7232f138e0507882e71632575365bb06c3c99bc7b871a208da77fbf475a17da9",
+                "content_type": "b'text/plain;charset=utf-8'",
+                "length": 39,
+                "path": "/zen",
+                "status": 200
+              },
+              {
+                "body_sha256": "049c6bd9bb4b4756a3aee6bc0228b631ad37edf044625c2a22af6117eee2831d",
+                "content_type": "b'application/octocat-stream'",
+                "length": 913,
+                "path": "/octocat",
+                "status": 200
+              }
+            ],
+            "paths": [
+              "/zen",
+              "/octocat"
+            ],
+            "target": "https://api.github.com"
+          }
+        }
+      },
+      "result": "PAID",
+      "verified": true
+    },
+    {
+      "label": "B: client withdraw",
+      "actor": "0xFdc45874126A0580d9A9d034F2AA20d9bdad8235",
+      "function": "withdraw",
+      "args": [
+        "1"
+      ],
+      "value": "0",
+      "hash": "0xfeaf5df963f048e0036a0ec81d68adfe9f1088dc8ee88701faac505ed2fdb4ae",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {
+          "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235": {
+            "amount": 1000000000000000,
+            "kind": "REFUND",
+            "payout_amount": 0,
+            "refund_amount": 1000000000000000,
+            "status": "PAID"
+          }
+        },
+        "dispute": null,
+        "held": 0,
+        "id": 1,
+        "paid": 0,
+        "phase": "SETTLED",
+        "refunded": 1000000000000000,
+        "submission": {
+          "at": 1792415468,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The / response body is a JSON object containing a field named billing_email holding the account billing address."
+          ],
+          "expires": 1792426177,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/"
+          ],
+          "review_end": 1792417477,
+          "submit_deadline": 1792417177,
+          "target_url": "https://api.github.com",
+          "title": "Required field absent (REJECTED refund)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "f019689fcddf8f39fbfd37e2363820479c3423d2d442abfd0be4acbb7ba90758",
+        "verdict": {
+          "result": {
+            "matched": [],
+            "outcome": "REJECTED"
+          },
+          "reviewed_at": 1792415730,
+          "snapshot": {
+            "observations": [
+              {
+                "body_sha256": "cb8c56af7fcef970136a8acacba4e16ea32ab6762dbaaddf6909fae9db2c9f5e",
+                "content_type": "b'application/json; charset=utf-8'",
+                "length": 2262,
+                "path": "/",
+                "status": 200
+              }
+            ],
+            "paths": [
+              "/"
+            ],
+            "target": "https://api.github.com"
+          }
+        }
+      },
+      "result": "REFUNDED",
+      "verified": true
+    },
+    {
+      "label": "C: vendor withdraw",
+      "actor": "0xCd8bE5b63AAb48E65AD9c2f64a9768Cbc923Df81",
+      "function": "withdraw",
+      "args": [
+        "2"
+      ],
+      "value": "0",
+      "hash": "0x2e2215bfabad04553408968763c06b1b59ddada4b7a69ad515f126934d6aec33",
+      "after": {
+        "client": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+        "credits": {
+          "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81": {
+            "amount": 1000000000000000,
+            "kind": "PAYOUT",
+            "payout_amount": 1000000000000000,
+            "refund_amount": 0,
+            "status": "PAID"
+          }
+        },
+        "dispute": {
+          "by": "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235",
+          "reason_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "held": 0,
+        "id": 2,
+        "paid": 1000000000000000,
+        "phase": "SETTLED",
+        "refunded": 0,
+        "submission": {
+          "at": 1792415598,
+          "submitter": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms": {
+          "budget": 1000000000000000,
+          "checks": [
+            "The /zen endpoint returns HTTP 200 with a short maxim (a single motivational sentence)."
+          ],
+          "expires": 1792426309,
+          "partial_bps": 5000,
+          "probe_paths": [
+            "/zen"
+          ],
+          "review_end": 1792417609,
+          "submit_deadline": 1792417309,
+          "target_url": "https://api.github.com",
+          "title": "Disputed then re-reviewed (ACCEPTED)",
+          "vendor": "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81"
+        },
+        "terms_digest": "9920f069c84eac222ed321549c821ec851393bf75913a7eae26b65f444ec92fe",
+        "verdict": {
+          "result": {
+            "matched": [
+              0
+            ],
+            "outcome": "ACCEPTED"
+          },
+          "reviewed_at": 1792415887,
+          "snapshot": {
+            "observations": [
+              {
+                "body_sha256": "1f38dd4b761858487798ea7d96fcbdd9f94bf51536d8433b1868638e1f116ff2",
+                "content_type": "b'text/plain;charset=utf-8'",
+                "length": 31,
+                "path": "/zen",
+                "status": 200
+              }
+            ],
+            "paths": [
+              "/zen"
+            ],
+            "target": "https://api.github.com"
+          }
+        }
+      },
+      "result": "PAID",
+      "verified": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "deployed schema is shipgate-v1",
+      "pass": true,
+      "detail": {
+        "clock": "2026-10-19T13:07:26.103950Z",
+        "count": 0,
+        "schema": "shipgate-v1"
+      }
+    },
+    {
+      "name": "A: create: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "A: fund: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "A: fund: result FUNDED",
+      "pass": true,
+      "detail": {
+        "actual": "FUNDED"
+      }
+    },
+    {
+      "name": "A: submit: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "A: submit: result SUBMITTED",
+      "pass": true,
+      "detail": {
+        "actual": "SUBMITTED"
+      }
+    },
+    {
+      "name": "B: create: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "B: fund: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "B: fund: result FUNDED",
+      "pass": true,
+      "detail": {
+        "actual": "FUNDED"
+      }
+    },
+    {
+      "name": "B: submit: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "B: submit: result SUBMITTED",
+      "pass": true,
+      "detail": {
+        "actual": "SUBMITTED"
+      }
+    },
+    {
+      "name": "C: create: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "C: fund: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "C: fund: result FUNDED",
+      "pass": true,
+      "detail": {
+        "actual": "FUNDED"
+      }
+    },
+    {
+      "name": "C: submit: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "C: submit: result SUBMITTED",
+      "pass": true,
+      "detail": {
+        "actual": "SUBMITTED"
+      }
+    },
+    {
+      "name": "A: review: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "A: review: result ACCEPTED",
+      "pass": true,
+      "detail": {
+        "actual": "ACCEPTED"
+      }
+    },
+    {
+      "name": "A outcome ACCEPTED",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "B: review: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "B: review: result REJECTED",
+      "pass": true,
+      "detail": {
+        "actual": "REJECTED"
+      }
+    },
+    {
+      "name": "B outcome REJECTED",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "C: review: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "C: review: result ACCEPTED",
+      "pass": true,
+      "detail": {
+        "actual": "ACCEPTED"
+      }
+    },
+    {
+      "name": "C outcome ACCEPTED",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "C: dispute: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "C: dispute: result DISPUTED",
+      "pass": true,
+      "detail": {
+        "actual": "DISPUTED"
+      }
+    },
+    {
+      "name": "C: resolve: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "C: resolve: result ACCEPTED",
+      "pass": true,
+      "detail": {
+        "actual": "ACCEPTED"
+      }
+    },
+    {
+      "name": "C re-review ACCEPTED",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "A: settle: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "A: settle: result ACCEPTED",
+      "pass": true,
+      "detail": {
+        "actual": "ACCEPTED"
+      }
+    },
+    {
+      "name": "B: settle: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "B: settle: result REJECTED",
+      "pass": true,
+      "detail": {
+        "actual": "REJECTED"
+      }
+    },
+    {
+      "name": "C: settle: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "C: settle: result ACCEPTED",
+      "pass": true,
+      "detail": {
+        "actual": "ACCEPTED"
+      }
+    },
+    {
+      "name": "A credits vendor full budget",
+      "pass": true,
+      "detail": {
+        "0xcd8be5b63aab48e65ad9c2f64a9768cbc923df81": {
+          "amount": 1000000000000000,
+          "kind": "PAYOUT",
+          "payout_amount": 1000000000000000,
+          "refund_amount": 0,
+          "status": "AVAILABLE"
+        }
+      }
+    },
+    {
+      "name": "A: vendor withdraw: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "A: vendor withdraw: result PAID",
+      "pass": true,
+      "detail": {
+        "actual": "PAID"
+      }
+    },
+    {
+      "name": "B credits client full refund",
+      "pass": true,
+      "detail": {
+        "0xfdc45874126a0580d9a9d034f2aa20d9bdad8235": {
+          "amount": 1000000000000000,
+          "kind": "REFUND",
+          "payout_amount": 0,
+          "refund_amount": 1000000000000000,
+          "status": "AVAILABLE"
+        }
+      }
+    },
+    {
+      "name": "B: client withdraw: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "B: client withdraw: result REFUNDED",
+      "pass": true,
+      "detail": {
+        "actual": "REFUNDED"
+      }
+    },
+    {
+      "name": "C: vendor withdraw: SUCCESS",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "C: vendor withdraw: result PAID",
+      "pass": true,
+      "detail": {
+        "actual": "PAID"
+      }
+    },
+    {
+      "name": "A value conservation",
+      "pass": true,
+      "detail": {
+        "held": 0,
+        "paid": 1000000000000000,
+        "refunded": 0
+      }
+    },
+    {
+      "name": "B value conservation",
+      "pass": true,
+      "detail": {
+        "held": 0,
+        "paid": 0,
+        "refunded": 1000000000000000
+      }
+    },
+    {
+      "name": "C value conservation",
+      "pass": true,
+      "detail": {
+        "held": 0,
+        "paid": 1000000000000000,
+        "refunded": 0
+      }
+    },
+    {
+      "name": "A re-review replay guarded",
+      "pass": true,
+      "detail": {}
+    }
+  ],
+  "started_at": "2026-10-19T13:07:25.011Z",
+  "finished_at": "2026-10-19T13:51:16.675Z"
+}
