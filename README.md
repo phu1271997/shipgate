@@ -84,3 +84,14 @@ npm run dev
 ```
 
 MetaMask signs; `createClient({ chain: studionet, account: userAddress })` — no secret ships in the bundle. On connect the app switches/adds the GenLayer Studio network. Review and re-review transactions show an explicit "validators are fetching the live endpoint and voting" waiting state, and the dossier renders the AI verdict, which checks passed, the observed HTTP statuses, and an Explorer link.
+
+### Routes
+
+The UI is split across dedicated routes (react-router), not one page:
+
+- `/` — overview + how it judges
+- `/agreements/:id` — the shipment dossier: lifecycle, live verdict, and role actions
+- `/create` — seal a new agreement
+- `/explorer` — every agreement on the contract, read live from StudioNet, with resolved cases, verdicts, and payouts
+
+Each page has explicit loading / not-found / error states. `npm run e2e` drives the production build in headless Chrome against live StudioNet state (home, Explorer, detail pages, not-found, create — 8 checks).
