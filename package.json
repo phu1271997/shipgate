@@ -8,17 +8,20 @@
     "build": "tsc --noEmit && vite build",
     "test": "vitest run src tests",
     "deploy": "node scripts/deploy.mjs",
-    "live": "node scripts/live.mjs"
+    "live": "node scripts/live.mjs",
+    "e2e": "node scripts/e2e.mjs"
   },
   "dependencies": {
     "genlayer-js": "1.1.8",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "react-router-dom": "7.9.4"
   },
   "devDependencies": {
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@vitejs/plugin-react": "4.7.0",
+    "playwright-core": "^1.64.1",
     "typescript": "5.9.3",
     "vite": "6.4.4",
     "vitest": "4.1.11"
